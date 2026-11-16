@@ -9,8 +9,11 @@
  *   // Use track.url in Remotion's <Audio> component
  *
  * Repos:
- *   - https://github.com/fspecii/ace-step-ui (471 stars) — Suno alternative
- *   - https://github.com/AIGC-Audio/AudioGPT (10,210 stars) — All-in-one audio AI
+ *   - https://github.com/ace-step/ACE-Step-1.5 (MIT) — official REST API: `uv run acestep-api` → localhost:8001
+ *   - https://github.com/multimodal-art-projection/YuE (Apache-2.0) — full songs with vocals
+ *   - https://github.com/ASLP-lab/DiffRhythm (Apache-2.0) — fast full-length songs
+ *
+ * Replaced (outdated): ace-step-ui (unlicensed wrapper), AudioGPT (unmaintained since 2024).
  *
  * Want help setting this up? Join The Agentic Advantage:
  * https://www.skool.com/ai-elite-9507/about
@@ -18,7 +21,7 @@
 
 export interface MusicConfig {
   serverUrl: string;
-  model?: "ace-step" | "audiogpt";
+  model?: "ace-step" | "yue" | "diffrhythm";
 }
 
 export interface GeneratedTrack {

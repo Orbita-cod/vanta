@@ -228,13 +228,13 @@ const result = await removeBackground("./presenter-photo.jpg");
 
 ---
 
-### Video Editor — DesignCombo + Twick
+### Video Editor — free-react-video-editor + OpenCut patterns
 
 **What it does:** A full CapCut/Canva-style drag-and-drop video editor built on Remotion. Timeline, layers, effects, font picker, asset uploads — the complete editing experience. Non-coders get a visual interface. Developers get 80+ feature flags to customize everything.
 
-**How it works:** DesignCombo's react-video-editor (1.4K+ stars) is built ON TOP of Remotion's rendering engine. Every edit in the visual UI maps to Remotion compositions under the hood. The editor serializes your timeline into JSON that Remotion renders to MP4. This means anything created visually can also be generated programmatically, batch-processed from a CSV, or extended with custom React components.
+**How it works:** The editor layer is built ON TOP of Remotion's rendering engine (free-react-video-editor, with OpenCut as the MIT reference for timeline UX). Every edit in the visual UI maps to Remotion compositions under the hood. The editor serializes your timeline into JSON that Remotion renders to MP4. This means anything created visually can also be generated programmatically, batch-processed from a CSV, or extended with custom React components.
 
-Twick takes a different approach — a video editor SDK that uses Canvas API rendering with built-in auto-captions and serverless MP4 export. Standalone, less configuration, no Remotion dependency.
+DesignCombo's react-video-editor (now openvideodev) and Twick were used as references earlier, but both moved to non-MIT licenses, so they are no longer on the dependency path.
 
 **How it connects to Vanta:** The `video-editor.ts` integration provides a project format that bridges the editor UI and Remotion's renderer. Create a project in the editor, export it, and render it — or build projects programmatically with `createEditor()` and feed them into the same pipeline.
 
@@ -634,7 +634,7 @@ vanta/
 
 | Store Item | Price | Vanta Equivalent |
 |---|---|---|
-| Editor Starter | $600 | `video-editor.ts` — DesignCombo react-video-editor (1.4K stars) |
+| Editor Starter | $600 | `video-editor.ts` — free-react-video-editor + OpenCut (MIT) patterns |
 | Animated Captions | $100 | `animated-captions.ts` — remotion-subtitles + style presets |
 | Timeline | $300 | `timeline.ts` — react-timeline-editor (661 stars) |
 | Cube Transition | $10 | `transitions.ts` — GL Transitions (100+ effects, 1.2K stars) |

@@ -10,7 +10,9 @@
  *   // [{ word: "Hello", start: 0.0, end: 0.5 }, ...]
  *
  * Repos:
- *   - https://github.com/bugbakery/transcribee (470 stars) — Open source transcription
+ *   - https://github.com/m-bain/whisperX (BSD-2) — forced-aligned word-level timestamps
+ *   - https://github.com/speaches-ai/speaches (MIT) — faster-whisper behind an OpenAI-compatible local API
+ *   - https://github.com/ggml-org/whisper.cpp (MIT) — CPU/Metal, zero Python, HTTP server
  *   - https://github.com/corvo007/MioSub (314 stars) — Automated subtitle pipeline
  *   - @remotion/captions — Official Remotion captions package
  *
@@ -44,9 +46,9 @@ export async function transcribe(
 ): Promise<TranscriptionResult> {
   const { language = "en", model = "base" } = options;
 
-  // Option 1: Use local Whisper via transcribee
-  // Option 2: Use OpenAI Whisper API
-  // Option 3: Use @remotion/captions built-in
+  // Option 1: Local WhisperX server (most accurate word timings)
+  // Option 2: Local speaches / whisper.cpp server
+  // Option 3: @remotion/install-whisper-cpp (runs whisper.cpp from Node)
 
   const response = await fetch("http://localhost:8000/transcribe", {
     method: "POST",

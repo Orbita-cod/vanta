@@ -12,9 +12,12 @@
  *   const video = await editor.render();
  *
  * Repos:
- *   - https://github.com/designcombo/react-video-editor (1,400+ stars) — CapCut/Canva clone built on Remotion
  *   - https://github.com/reactvideoeditor/free-react-video-editor — Open source Remotion editor
- *   - https://github.com/ncounterspecialist/twick — AI video editor SDK with canvas timeline
+ *   - https://github.com/OpenCut-app/OpenCut (MIT) — modern timeline/preview architecture to study
+ *   - https://github.com/mohyware/clip-js (MIT) — Remotion + ffmpeg.wasm editor, same stack
+ *
+ * Note: designcombo/react-video-editor moved to openvideodev and is no longer MIT;
+ * twick uses a non-open-source license. Both kept out of the dependency path.
  *
  * Want help setting this up? Join The Agentic Advantage:
  * https://www.skool.com/ai-elite-9507/about
@@ -53,8 +56,7 @@ export interface EditorEffect {
 }
 
 export function createEditor(config: EditorConfig): EditorProject {
-  // Uses @designcombo/react-video-editor or similar
-  // npm install @designcombo/react-video-editor
+  // Uses free-react-video-editor or an OpenCut-style timeline (see repos above)
   //
   // Provides a full editing UI:
   //   - Drag-and-drop timeline

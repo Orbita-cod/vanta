@@ -1,8 +1,8 @@
 /**
  * VANTA — AI Avatar Integration
  *
- * Integrates SadTalker and Wav2Lip for turning a single photo
- * into a talking-head video with perfect lip sync.
+ * Integrates MuseTalk, LatentSync and InfiniteTalk for turning a single
+ * photo (or existing footage) into a talking-head video with lip sync.
  *
  * Usage:
  *   const avatar = await createAvatar("./headshot.jpg");
@@ -10,10 +10,13 @@
  *   // Use videoUrl in Remotion's <OffthreadVideo> component
  *
  * Repos:
- *   - https://github.com/OpenTalker/SadTalker (7,212 stars) — Photo → talking head
- *   - https://github.com/Rudrabha/Wav2Lip — Perfect lip sync
- *   - https://github.com/OpenTalker/video-retalking (7,212 stars) — Re-dub any video
- *   - https://github.com/tencent-ailab/V-Express (2,365 stars) — Expression control
+ *   - https://github.com/TMElyralab/MuseTalk (MIT) — real-time 30fps+ lip sync / dubbing
+ *   - https://github.com/bytedance/LatentSync (Apache-2.0) — diffusion lip sync on existing video
+ *   - https://github.com/MeiGen-AI/InfiniteTalk (Apache-2.0) — unlimited-length photo → talking video
+ *   - https://github.com/antgroup/echomimic_v3 (Apache-2.0) — expressive half/full-body animation
+ *
+ * Replaced (outdated): SadTalker, VideoReTalking (unmaintained since 2024),
+ * Wav2Lip (non-commercial), V-Express (research-only checkpoints).
  *
  * This replaces Synthesia ($30/video) with unlimited free generation.
  *
@@ -24,7 +27,9 @@
 export interface AvatarConfig {
   serverUrl: string;
   imagePath: string;
-  method?: "sadtalker" | "wav2lip" | "v-express";
+  method?: "musetalk" | "latentsync" | "infinitetalk";
+  /** Model used by speakWithExpression(). Defaults to "echomimic". */
+  expressionMethod?: "echomimic" | "infinitetalk";
 }
 
 export interface Avatar {
@@ -33,7 +38,7 @@ export interface Avatar {
 }
 
 export async function createAvatar(config: AvatarConfig): Promise<Avatar> {
-  const { serverUrl, imagePath, method = "sadtalker" } = config;
+  const { serverUrl, imagePath, method = "musetalk", expressionMethod = "echomimic" } = config;
 
   return {
     speak: async (audioPath: string) => {
@@ -49,7 +54,7 @@ export async function createAvatar(config: AvatarConfig): Promise<Avatar> {
       const response = await fetch(`${serverUrl}/generate`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ image: imagePath, audio: audioPath, method: "v-express", emotion }),
+        body: JSON.stringify({ image: imagePath, audio: audioPath, method: expressionMethod, emotion }),
       });
       const { video_url } = await response.json();
       return video_url;

@@ -2,10 +2,10 @@ import { AbsoluteFill, useCurrentFrame, interpolate } from "remotion";
 import React from "react";
 
 const CAPABILITIES = [
-  { name: "Voice Cloning", detail: "GPT-SoVITS  /  54K stars" },
-  { name: "Talking Avatars", detail: "SadTalker  /  7K stars" },
-  { name: "Auto Captions", detail: "Whisper  /  word-level" },
-  { name: "Video Generation", detail: "Open-Sora  /  text to video" },
+  { name: "Voice Cloning", detail: "GPT-SoVITS  /  60K stars" },
+  { name: "Talking Avatars", detail: "MuseTalk  /  LatentSync" },
+  { name: "Auto Captions", detail: "WhisperX  /  word-level" },
+  { name: "Video Generation", detail: "Wan 2.2  /  text to video" },
   { name: "Music Generation", detail: "ACE-Step  /  free Suno alt" },
   { name: "Image Editing", detail: "Sharp  /  31K stars" },
   { name: "Vector Graphics", detail: "SVG.js + Paper.js" },
